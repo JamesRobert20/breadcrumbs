@@ -1,4 +1,4 @@
-import Folder from '../components/Folder';
+import Content from '../components/Content';
 import PathContext from '../contexts/pathContext'
 import { useContext, useEffect } from 'react'
 
@@ -10,7 +10,7 @@ export default function Home() {
     }, []);
 
     return (
-        <Folder folderName={"root"} />
+        <Content contentName={"root"} contentType={"dir"} />
     )
 }
 

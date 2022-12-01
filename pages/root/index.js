@@ -1,5 +1,4 @@
-import Folder from '../../components/Folder';
-import File from '../../components/File';
+import Content from '../../components/Content';
 import PathContext from '../../contexts/pathContext'
 import { useContext, useEffect } from 'react'
 
@@ -10,27 +9,24 @@ function index({ contents }) {
         setGlobalPath(["root"])
     }, []);
 
+    if(contents.type !== "dir")
+        return (
+            <div>{"THIS IS FILE: root"}</div>
+        )
+
   return (Object.keys(contents.children).map((item, index) => (
-        contents.children[item].type === "dir" ? <Folder key={index} folderName={item} /> : <File key={index}/>
+        <Content key={index} contentName={item} contentType={contents["children"][item].type} />
     )))
 }
 
 export default index
 
 export async function getServerSideProps({ req, res, resolvedUrl }) {
-    console.log("here is ", resolvedUrl);
-  
-    const contents = await (await fetch('http://localhost:3000/api/path'+ resolvedUrl, {
-        method: 'POST',
-        body: JSON.stringify({ mypath: "root" }),
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    })).json();
-  
-    return {
-        props: {
-            contents
-        }
-    }
+    const contents = await (await fetch('http://localhost:3000/api/path'+ resolvedUrl)).json();
+
+  return {
+      props: {
+          contents
+      }
   }
+}

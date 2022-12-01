@@ -16,22 +16,24 @@
 }
 .pathContainer
 {
-    width: 80%;
+    width: 100%;
     height: 60px;
     @include flexDisplaying($align: center);
+    padding-left: 1rem;
 }
 .breadCrumbs
 {
     padding-top: 5px;
-    width: 130px;
     height: 100%;
-    border-radius: 5px;
     text-align: center;
     font-size: xx-large;
     cursor: default;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 .canHover:hover
 {
     cursor: pointer;
     border: 1px solid grey;
+    background-color: lightgray;
 }

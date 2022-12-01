@@ -13,7 +13,6 @@ export default function handler(req, res) {
         let recurseObject = root
         for(let i = 1; i < params.length; i++)
         {   
-            //console.log(recurseObject);
             if(recurseObject.type === "dir")
             {
                 if(!(Object.keys(recurseObject.children).includes(params[i])))
@@ -29,14 +28,14 @@ export default function handler(req, res) {
             }
             
         }
-        let result = {...recurseObject}
+        var result = {...recurseObject}
         if(result.type === "dir")
         {
-            Object.keys(result.children).forEach((directChild) => {
-                delete result.children[directChild].children
+            result.children = {}
+            Object.keys(recurseObject.children).forEach((directChild) => {
+                result.children[directChild] = { type: recurseObject.children[directChild].type }
             })
         }
-        console.log("What does result contain ", result);
         res.status(200).json(result)
     }
 }

@@ -1,4 +1,4 @@
-const root = {
+let root = {
     type: "dir",
     children: {
         home: {

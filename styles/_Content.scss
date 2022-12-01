@@ -1,6 +1,6 @@
 @import 'main';
 
-.folderContainer
+.folderContainer, .fileContainer
 {
     cursor: pointer;
     transition: transform .4s;
@@ -26,10 +26,21 @@
     width: 77%;
     height: 65%;
 }
-.folderName
+.folderName, .fileName
 {
     text-align: center;
     font-weight: bold;
     width: 98%;
     height: 25%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.fileContainer
+{
+    background-color: white;
+}
+.fileIcon
+{
+    width: 80% !important;
+    height: 70% !important;
 }
