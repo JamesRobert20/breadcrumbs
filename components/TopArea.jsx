@@ -18,9 +18,7 @@ function TopArea() {
 
     return (
         <div className={styles.topContainer}>
-            <div className={styles.searchBar}>
-
-            </div>
+            <center><h1>Welcome To BreadCrumbs</h1></center>
             <div className={styles.pathContainer}>
                 {globalPath.map((path, index) => (
                     <div key={index} style={{ height: '95%', display: 'flex', marginRight: '10px' }}>

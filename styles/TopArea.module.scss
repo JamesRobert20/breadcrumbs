@@ -7,13 +7,6 @@
     border-bottom: 1px solid grey;
     @include flexDisplaying($direction: column, $justify: space-around);
 }
-.searchBar
-{
-    width: 400px;
-    height: 50px;
-    border-radius: 7px;
-    border: 1px solid black;
-}
 .pathContainer
 {
     width: 100%;
