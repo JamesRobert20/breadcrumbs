@@ -1,17 +1,26 @@
 import PathContext from '../contexts/pathContext'
-import { useContext, useEffect } from 'react'
+import { useContext, useEffect, useRef } from 'react'
 import { useRouter } from 'next/router'
 import InsertDriveFileIcon from '@mui/icons-material/InsertDriveFile';
 
 function Content({ contentName, contentType }) {
     const { globalPath, setGlobalPath } = useContext(PathContext);
     const router = useRouter();
+    const newPath = useRef("");
+
+    useEffect(() => {
+        newPath.current = "";
+    }, [])
 
     return (
         <div 
             onClick={() => {
-                setGlobalPath([...globalPath, contentName])
-                contentName === "root" ? router.push("/root") : router.push("/root/" + [...globalPath, contentName].slice(1).join("/"));
+                if(newPath.current !== contentName)
+                {
+                    setGlobalPath([...globalPath, contentName])
+                    newPath.current = contentName;
+                    contentName === "root" ? router.push("/root") : router.push("/root/" + [...globalPath, contentName].slice(1).join("/"));
+                }
             }} 
             className={contentType === "dir" ? "folderContainer": "fileContainer"}
         >
