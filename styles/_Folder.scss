@@ -1,0 +1,35 @@
+@import 'main';
+
+.folderContainer
+{
+    cursor: pointer;
+    transition: transform .4s;
+    @include flexDisplaying($direction: column, $justify: space-evenly, $align: center);
+    border: 1px solid black;
+    border-radius: 20px;
+    box-shadow: 2px 3px 5px black;
+    margin: 0px 30px 0px 30px;
+    background-color: rgba(212, 189, 147, 0.3);
+    width: 115px;
+    height: 120px;
+}
+.folderContainer:hover, .fileContainer:hover
+{
+    transform: scale(1.1);
+}
+.folderIcon
+{
+    border: 2px solid rgba(212, 189, 147, 0.3);
+    box-shadow: 2px 2px 5px black;
+    border-radius: 20px;
+    opacity: 65%;
+    width: 77%;
+    height: 65%;
+}
+.folderName
+{
+    text-align: center;
+    font-weight: bold;
+    width: 98%;
+    height: 25%;
+}
